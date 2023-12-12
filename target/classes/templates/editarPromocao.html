@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agência De Viagens</title>
+
+<link rel="apple-touch-icon" sizes="180x180"
+	href="../../src/icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32"
+	href="../../src/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16"
+	href="../../src/icons/favicon-16x16.png">
+<link rel="manifest" href="../../src/icons/site.webmanifest">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+	crossorigin="anonymous">
+</head>
+
+<style>
+@import
+	url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap")
+	;
+
+*, *::before, *::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Roboto, system-ui, sans-serif;
+	background-color: #242d34;
+	color: #e7e9ea;
+	height: 120vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+button {
+	font-family: inherit;
+	border: 0;
+	color: inherit;
+	background: none;
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.container {
+	max-width: 800px;
+	width: 100%;
+	background-color: #000;
+	padding: 24px 20px;
+	border-radius: 16px;
+	margin-inline: 0.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.header {
+	color: #d6d9db;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+}
+
+.close-button {
+	position: absolute;
+	top: 0;
+	left: 0;
+	font-size: 20px;
+	padding: 7px 11px;
+	border-radius: 50%;
+}
+
+.close-button:hover {
+	background-color: #212222;
+}
+
+.content {
+	width: 500px;
+	text-align: center;
+	margin-inline: auto;
+}
+
+.content h1 {
+	margin-block: 20px;
+	font-size: 30px;
+}
+
+.action-buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	margin-top: 36px;
+}
+
+.primary-button {
+	width: 80%;
+	border-radius: 20px;
+	padding: 8px 0;
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.primary-button {
+	background-color: #fff;
+	color: #0f1419;
+}
+
+.primary-button:hover {
+	background-color: #e6e6e6;
+}
+
+.form-check {
+	display: flex;
+	text-align: left;
+	margin-top: 10px;
+}
+
+.url-log-in {
+	width: 100%;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.url-log-in input {
+	width: 50%;
+	border-radius: 6px;
+	background-color: transparent;
+	border: 1px solid #333639;
+	outline: none;
+	padding: 15px 10px;
+	color: white;
+	font-size: 14px;
+	font-family: "Roboto";
+}
+
+.id-log-in {
+	width: 100%;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.id-log-in input {
+	width: 70%;
+	border-radius: 6px;
+	background-color: transparent;
+	border: 1px solid #333639;
+	outline: none;
+	padding: 15px 10px;
+	color: white;
+	font-size: 14px;
+	font-family: "Roboto";
+}
+
+.nome-log-in {
+	width: 100%;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.nome-log-in input {
+	width: 62%;
+	border-radius: 6px;
+	background-color: transparent;
+	border: 1px solid #333639;
+	outline: none;
+	padding: 15px 10px;
+	color: white;
+	font-size: 14px;
+	font-family: "Roboto";
+}
+
+.cpf-log-in {
+	width: 100%;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.cpf-log-in input {
+	width: 62%;
+	border-radius: 6px;
+	background-color: transparent;
+	border: 1px solid #333639;
+	outline: none;
+	padding: 15px 10px;
+	color: white;
+	font-size: 14px;
+	font-family: "Roboto";
+}
+
+.tel-log-in {
+	width: 100%;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.tel-log-in input {
+	width: 33%;
+	border-radius: 6px;
+	background-color: transparent;
+	border: 1px solid #333639;
+	outline: none;
+	padding: 15px 10px;
+	color: white;
+	font-size: 14px;
+	font-family: "Roboto";
+}
+
+.date-log-in {
+	width: 100%;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.date-log-in input {
+	width: 40%;
+	border-radius: 6px;
+	background-color: transparent;
+	border: 1px solid #333639;
+	outline: none;
+	padding: 15px 10px;
+	color: white;
+	font-size: 14px;
+	font-family: "Roboto";
+}
+
+input::placeholder {
+	opacity: 0;
+}
+
+input+label {
+	position: absolute;
+	top: 10px;
+	left: 1px;
+	color: #71767b;
+	font-size: 18px;
+	pointer-events: none;
+	transition: 200ms ease;
+}
+
+input:focus {
+	outline: 1px solid #1d9bf0;
+}
+
+input:focus+label {
+	color: #1d9bf0;
+}
+
+input:not (:placeholder-shown )+label, input:focus+label {
+	top: 6px;
+	left: 10px;
+	font-size: 12px;
+}
+
+@media ( max-width < 600px) {
+	.container>div {
+		width: 80%;
+	}
+}
+
+@media ( width < 700px) {
+	.container {
+		margin-inline: 1.5rem;
+	}
+	@media ( width < 500px) {
+		.content {
+			width: 300px;
+		}
+		.date-log-in input {
+			margin-left: 111px;
+		}
+		.tel-log-in input {
+			margin-left: 145 px;
+		}
+		.cpf-log-in input {
+			margin-left: 70px;
+		}
+		.nome-log-in input {
+			margin-left: 31px;
+		}
+	}
+}
+}
+</style>
+
+<body>
+	<main>
+	<div class="container">
+		<div class="header">
+			<a href="../../promocoes">
+				<button class="close-button">
+					<i class="fa-solid fa-xmark">x</i>
+				</button>
+			</a> <img src="../../src/img/travel.jpg" alt="logo" height="99px"
+				width="100px">
+		</div>
+
+		<div class="content">
+			<h1>Editar Promoção</h1>
+
+			<form class="Preenchimento"
+				th:action="@{/promocoes/editar/{idPromocao}(idPromocao=${promocao.idPromocao})}"
+				th:object="${promocao}" method="post">
+
+				<div class="id-log-in">
+					<input placeholder="ID" type="number" id="idPromocao"
+						th:field="*{idPromocao}" th:readonly="readonly" /> <label
+						for="idPromocao">*ID:</label>
+				</div>
+
+				<div class="nome-log-in">
+					<input type="text" placeholder="Nome" id="nome" th:field="*{nome}"
+						required> <label for="log-in">*Nome:</label>
+				</div>
+
+				<div class="cpf-log-in">
+					<input type="text" placeholder="Descrição" id="descricao"
+						th:field="*{descricao}" required> <label for="log-in">*Descrição:</label>
+				</div>
+
+				<div class="tel-log-in">
+					<input type="text" placeholder="Preço" id="preco"
+						th:field="*{precoPromocional}" required> <label
+						for="log-in">*Preço Promocional:</label>
+				</div>
+
+				<div class="date-log-in">
+					<input type="text" placeholder="Data de inicio" id="data"
+						th:field="*{dataDeInicio}" required> <label for="log-in">*Data
+						de Inicio:</label>
+				</div>
+
+				<div class="date-log-in">
+					<input type="text" placeholder="Data de Término" id="data"
+						th:field="*{dataDeTermino}" required> <label for="log-in">*Data
+						de Término:</label>
+				</div>
+
+				<div class="form-group">
+					<label>Atualize o(s) Destino(s) para obter essa Promoção:</label>
+					<div th:each="destino : ${destinos}">
+						<div class="form-check">
+							<p>
+								<input class="form-check-input" type="checkbox"
+									id="destinos-${destino.idDestino}" name="destinos"
+									th:value="${destino.idDestino}"
+									th:checked="${promocao.destinos.contains(destino)}" />
+							</p>
+							<label class="form-check-label"
+								th:for="'destinos-' + ${destino.idDestino}"
+								th:text="${destino.nome}"></label>
+						</div>
+
+					</div>
+				</div>
+
+
+				<div class="action-buttons">
+					<a href="../../destinos">
+						<button class="primary-button" type="submit">Editar</button>
+					</a>
+				</div>
+			</form>
+
+		</div>
+
+	</div>
+	</main>
+</body>
+
+</html>
